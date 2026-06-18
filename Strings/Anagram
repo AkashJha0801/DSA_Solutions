@@ -1,0 +1,96 @@
+class Solution {
+    public boolean isAnagram(String s, String t) {
+        // brute force ----------
+        // char s1 [] = s.toCharArray() ;
+        // char s2 [] = t.toCharArray() ;
+
+        // int l1 = s1.length ;
+        // int l2 = s2.length ;
+
+        // if(l1 != l2){
+        //     return false ;
+        // }
+
+        // for(int i = 0 ; i < l1 ; i++){
+        //     char w = s1[i] ;
+        //     for(int j = 0 ; j < l2 ; j++){
+        //         if(w == s2[j]){
+        //             s2[j] = 0 ;
+        //             break ; 
+        //         }
+
+        //         if(j == l2 -1 && w != s2[j]){
+        //             return false ;
+        //         }
+        //     }
+        // }
+        // return true ;
+
+        // more optimal ------------
+
+        // int l1 = s.length() ;
+        // int l2 = t.length() ;
+
+        // if(l1 != l2){
+        //     return false ;
+        // }
+
+        // char s1 [] = s.toCharArray() ;
+        // char s2 [] = t.toCharArray() ;
+
+        // Arrays.sort(s1) ;
+        // Arrays.sort(s2) ;
+
+        // for(int i = 0 ; i < l1 ; i++){
+        //     if(s1[i] != s2[i]){
+        //         return false ;
+        //     }
+        // }
+
+        // return true ;
+
+        // best approach ---------- isme problem hai 6+4 = 7+3 =10
+        // int l1 = s.length() ;
+        // int l2 = t.length() ;
+
+        // if(l1 != l2){
+        //     return false ;
+        // }
+
+        // int sum1 = 0 ;
+        // int sum2 = 0 ;
+
+        // for(int i = 0 ; i < l1 ; i++){
+        //     sum1 = sum1 + s.charAt(i) - 'a' ;
+        //     sum2 = sum2 + t.charAt(i) - 'a' ;
+        // }
+
+        // if(sum1 != sum2) return false ;
+
+        // return true ;
+
+        // best approach ----------
+        int l1 = s.length() ;
+        int l2 = t.length() ;
+
+        if(l1 != l2){
+            return false ;
+        }
+
+        int count [] = new int[26] ;
+
+        for(int i = 0 ; i < l1 ; i++){
+            count[s.charAt(i) - 'a']++ ;
+            count[t.charAt(i) - 'a']-- ;
+        }
+
+        for(int i = 0 ; i < 26 ; i++){
+            if(count[i] != 0){
+                return false ;
+            }
+        }
+
+        return true ;
+
+    }
+}
